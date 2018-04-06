@@ -1,0 +1,14 @@
+option java_package = "ch.hsr.dsl";
+
+service MyProtocol {
+   rpc GetMessage(AMessage) returns (BMessage) {}
+}
+
+message AMessage {
+  required string request=1;
+  optional int32 code=2;
+}
+
+message BMessage {
+  optional string reply=1;
+}
