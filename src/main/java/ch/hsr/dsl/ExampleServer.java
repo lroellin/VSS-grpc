@@ -2,6 +2,7 @@ package ch.hsr.dsl;
 
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import static ch.hsr.dsl.Protocol.*;
 
 import java.io.IOException;
 
@@ -13,9 +14,9 @@ public class ExampleServer {
 
     private static class MyService extends MyProtocolGrpc.MyProtocolImplBase {
         @Override
-        public void getMessage(Protocol.AMessage request, StreamObserver<Protocol.BMessage> responseObserver) {
+        public void getMessage(AMessage request, StreamObserver<BMessage> responseObserver) {
             System.out.println("server received: " + request.getRequest()+ ","+request.getCode());
-            Protocol.BMessage bMessage = Protocol.BMessage.newBuilder().setReply("hallo").build();
+            BMessage bMessage = BMessage.newBuilder().setReply("hallo").build();
             responseObserver.onNext(bMessage);
             System.out.println("server replied: " + bMessage.getReply());
             responseObserver.onCompleted();
