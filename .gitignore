@@ -55,3 +55,7 @@ fabric.properties
 .idea/
 build/
 *.iml
+.classpath
+.project
+.settings/
+bin/
