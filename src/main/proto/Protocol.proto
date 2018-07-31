@@ -1,14 +1,16 @@
 option java_package = "ch.hsr.dsl";
 
-service MyProtocol {
-   rpc GetMessage(AMessage) returns (BMessage) {}
+service RegistrationProtocol {
+   rpc Register(RequestMessage) returns (ReplyMessage) {}
 }
 
-message AMessage {
-  required string request=1;
-  optional int32 code=2;
+message RequestMessage {
+  required string firstName=1;
+  required string lastName=2;
+  required string affiliation=3;
+  required int32 pin=4;
 }
 
-message BMessage {
-  optional string reply=1;
+message ReplyMessage {
+  required string reply=1;
 }
